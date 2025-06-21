@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { CustomMDX, ScrollToHash } from "@/components";
 import { Meta, Schema, AvatarGroup, Button, Column, Heading, HeadingNav, Icon, Row, Text } from "@once-ui-system/core";
-import { baseURL, about, blog, person } from "@/resources";
+import { baseURL, blog, person } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/utils";
 import { Metadata } from 'next';
@@ -68,7 +68,7 @@ export default async function Blog({
             image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
             author={{
               name: person.name,
-              url: `${baseURL}${about.path}`,
+              url: `${baseURL}${blog.path}`,
               image: `${baseURL}${person.avatar}`,
             }}
           />
