@@ -18,9 +18,7 @@ const display = {
 
 // Enable password protection on selected routes
 // Set password in the .env file, refer to .env.example
-const protectedRoutes = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
-};
+const protectedRoutes = {};
 
 // Import and set font for each variant
 import { Geist } from "next/font/google";
@@ -105,20 +103,20 @@ const effects = {
   },
   dots: {
     display: true,
-    opacity: 40,
+    opacity: 'page',
     size: "2",
     color: "brand-background-strong",
   },
   grid: {
     display: false,
-    opacity: 100,
+    opacity: 'page',
     color: "neutral-alpha-medium",
     width: "0.25rem",
     height: "0.25rem",
   },
   lines: {
     display: false,
-    opacity: 100,
+    opacity: 'page',
     color: "neutral-alpha-weak",
     size: "16",
     thickness: 1,

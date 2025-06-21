@@ -45,6 +45,18 @@ export default TimeDisplay;
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const [language, setLanguage] = useState("es");
+
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem("language");
+    if (storedLanguage) {
+      setLanguage(storedLanguage);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("language", language);
+  }, [language]);
 
   return (
     <>
@@ -79,7 +91,7 @@ export const Header = () => {
                 <ThemeToggle />
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
-              <LanguageToggle />
+              <LanguageToggle language={language} setLanguage={setLanguage} />
             </Flex>
           </Flex>
         </Flex>
