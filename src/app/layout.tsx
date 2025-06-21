@@ -5,7 +5,7 @@ import '@/resources/custom.css'
 import classNames from "classnames";
 
 import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers } from '@/components';
+import { Footer, Header, RouteGuard, Providers, CursorEffect } from '@/components';
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 
 export async function generateMetadata() {
@@ -27,7 +27,7 @@ export default async function RootLayout({
     <Flex
       suppressHydrationWarning
       as="html"
-      lang="en"
+      lang="es"
       fillWidth
       className={classNames(
         fonts.heading.variable,
@@ -97,6 +97,7 @@ export default async function RootLayout({
       </head>
       <Providers>
         <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
+          <CursorEffect />
           <Background
             position="fixed"
             mask={{
@@ -138,24 +139,19 @@ export default async function RootLayout({
               color: effects.lines.color,
             }}
           />
-          <Flex fillWidth minHeight="16" hide="s"/>
-            <Header />
-            <Flex
-              zIndex={0}
-              fillWidth
-              padding="l"
-              horizontal="center"
-              flex={1}
-            >
-              <Flex horizontal="center" fillWidth minHeight="0">
-                <RouteGuard>
-                  {children}
-                </RouteGuard>
-              </Flex>
-            </Flex>
-            <Footer/>
-          </Column>
-        </Providers>
-      </Flex>
+          <Flex
+            as="main"
+            flex={1}
+            fillWidth
+            horizontal="center"
+          >
+            <RouteGuard>
+              {children}
+            </RouteGuard>
+          </Flex>
+          <Footer/>
+        </Column>
+      </Providers>
+    </Flex>
   );
 }
