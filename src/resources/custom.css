@@ -413,3 +413,14 @@ a, button, [role="button"], .cursor-effect-hover {
 [data-variant="body-default-m"] {
   font-size: 1rem;
 }
+
+/* Add your own custom styles here */
+
+@media (max-width: 768px) {
+  .mobile-center {
+    align-items: center !important;
+  }
+  .mobile-text-center {
+    text-align: center;
+  }
+}

@@ -82,7 +82,7 @@ export default function Page() {
         <div className="main-container">
           <Grid columns="12" mobileColumns="1" paddingY="40" gap="xl" className="hero-section">
             {/* Left Column (Sticky) - Avatar and Languages only */}
-            <Column data-col-span="4" gap="m" vertical="start" horizontal="end" className="sticky-column">
+            <Column data-col-span="4" gap="m" vertical="start" horizontal="end" className="sticky-column mobile-center">
               <Avatar src={person.avatar} size="xl" />
               {person.location && (
                 <Flex gap="s" vertical="center">
@@ -102,7 +102,7 @@ export default function Page() {
             </Column>
 
             {/* Right Column (Scrollable) - All content */}
-            <Column data-col-span="8" gap="0">
+            <Column data-col-span="8" gap="0" className="mobile-text-center">
               {/* Name */}
               <Heading variant="display-strong-l">{person.name}</Heading>
 
@@ -166,7 +166,7 @@ export default function Page() {
                       {about.services.title}
                     </Heading>
                   </Flex>
-                  <Grid columns="2" mobileColumns="2" gap="xl">
+                  <Grid columns="2" mobileColumns="1" gap="xl">
                     {about.services.services.map((service: { title: string; description: string; details?: string[] }, index: number) => (
                       <Card
                         key={index}
