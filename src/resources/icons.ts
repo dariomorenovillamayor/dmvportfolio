@@ -12,6 +12,11 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiHeart,
+  HiUserGroup,
+  HiAcademicCap,
+  HiShieldCheck,
+  HiLightBulb,
 } from "react-icons/hi2";
 
 import {
@@ -20,9 +25,20 @@ import {
   PiGridFourDuotone,
   PiBookBookmarkDuotone,
   PiImageDuotone,
+  PiAppleLogoDuotone,
+  PiBarbellDuotone,
+  PiUsersDuotone,
+  PiTargetDuotone,
 } from "react-icons/pi";
 
-import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads } from "react-icons/fa6";
+import {
+  FaDiscord,
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+  FaX,
+  FaThreads,
+} from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
@@ -41,11 +57,21 @@ export const iconLibrary: Record<string, IconType> = {
   eyeOff: HiOutlineEyeSlash,
   github: FaGithub,
   linkedin: FaLinkedin,
+  instagram: FaInstagram,
   x: FaX,
   threads: FaThreads,
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
   document: HiOutlineDocument,
-  rocket: HiOutlineRocketLaunch
+  rocket: HiOutlineRocketLaunch,
+  heart: HiHeart,
+  userGroup: HiUserGroup,
+  academicCap: HiAcademicCap,
+  shieldCheck: HiShieldCheck,
+  lightBulb: HiLightBulb,
+  apple: PiAppleLogoDuotone,
+  barbell: PiBarbellDuotone,
+  users: PiUsersDuotone,
+  target: PiTargetDuotone,
 };
 
 export type IconLibrary = typeof iconLibrary;
