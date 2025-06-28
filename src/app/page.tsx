@@ -23,12 +23,12 @@ import { useLanguage } from "@/components/LanguageProvider";
 // Service icons mapping
 const serviceIcons: { [key: string]: string } = {
   // Spanish services
-  "Salud y Prevención": "shieldCheck",
+  "Salud, Prevención, Pérdida y Control de Peso": "shieldCheck",
   "Nutrición Deportiva": "barbell",
   "Talleres para Grupos": "users",
   "Coaching Personal 1 a 1": "target",
   // English services
-  "Health and Prevention": "shieldCheck",
+  "Health, Prevention, Weight Loss and Weight Control": "shieldCheck",
   "Sports Nutrition": "barbell",
   "Group Workshops": "users",
   "1-on-1 Personal Coaching": "target",
@@ -37,12 +37,12 @@ const serviceIcons: { [key: string]: string } = {
 // Service route mapping
 const serviceRoutes: { [key: string]: string } = {
   // Spanish services
-  "Salud y Prevención": "/salud-prevencion-control-peso",
+  "Salud, Prevención, Pérdida y Control de Peso": "/salud-prevencion-control-peso",
   "Nutrición Deportiva": "/nutricion-deporte-online",
   "Coaching Personal 1 a 1": "/coaching-nutricional-personalizado",
   "Talleres para Grupos": "/talleres-grupales-nutricion",
   // English services
-  "Health and Prevention": "/salud-prevencion-control-peso",
+  "Health, Prevention, Weight Loss and Weight Control": "/salud-prevencion-control-peso",
   "Sports Nutrition": "/nutricion-deporte-online",
   "1-on-1 Personal Coaching": "/coaching-nutricional-personalizado",
   "Group Workshops": "/talleres-grupales-nutricion",
@@ -168,7 +168,8 @@ export default function Page() {
                             style={{
                               cursor: isClickable ? 'pointer' : 'default',
                               transition: 'all 0.2s ease-in-out',
-                              height: '550px',
+                              minHeight: '600px',
+                              maxHeight: '600px',
                               width: '100%',
                               maxWidth: '480px',
                               minWidth: '320px',
@@ -176,32 +177,24 @@ export default function Page() {
                               flexDirection: 'column',
                               boxSizing: 'border-box',
                               overflow: 'hidden',
-                              ...(isClickable && {
-                                ':hover': {
-                                  transform: 'translateY(-2px)',
-                                  boxShadow: '0 8px 25px rgba(0, 0, 0, 0.15)',
-                                  border: '1px solid var(--brand-alpha-medium)',
-                                }
-                              })
                             }}
                           >
-                            <Flex gap="l" vertical="center" horizontal="center" style={{ flex: 1, flexDirection: 'column', overflow: 'hidden', width: '100%' }}>
+                            <Flex gap="0" vertical="center" horizontal="center" style={{ flex: '0 1 90%', flexDirection: 'column', overflow: 'hidden', width: '100%' }}>
                               <Icon
                                 name={serviceIcons[service.title as keyof typeof serviceIcons] || "star"}
                                 size="xl"
                                 onBackground="brand-weak"
-                                style={{ marginBottom: '8px' }}
                               />
-                              <Column gap="m" horizontal="center" fillWidth style={{ flex: 1, justifyContent: 'center', width: '100%' }}>
+                              <Column gap="m" horizontal="center" fillWidth style={{ flex: '0 1 100%', justifyContent: 'center', width: '100%', marginTop: '0px' }}>
                                 <Heading 
                                   variant="heading-strong-xl" 
                                   style={{ 
                                     textAlign: 'center',
                                     lineHeight: '1.2',
-                                    marginBottom: '8px',
-                                    whiteSpace: 'nowrap',
-                                    overflow: 'hidden',
-                                    textOverflow: 'ellipsis',
+                                    marginBottom: 0,
+                                    whiteSpace: 'normal',
+                                    overflow: 'visible',
+                                    textOverflow: 'unset',
                                     width: '100%'
                                   }}
                                 >
@@ -213,21 +206,21 @@ export default function Page() {
                                   style={{ 
                                     textAlign: 'center',
                                     lineHeight: '1.5',
-                                    display: '-webkit-box',
-                                    WebkitLineClamp: 3,
-                                    WebkitBoxOrient: 'vertical',
-                                    overflow: 'hidden',
+                                    display: 'block',
+                                    WebkitLineClamp: 'unset',
+                                    WebkitBoxOrient: 'unset',
+                                    overflow: 'visible',
                                     width: '100%'
                                   }}
                                 >
                                   {service.description}
                                 </Text>
                                 {service.details && (
-                                  <Column gap="s" style={{ marginTop: '16px', width: '100%' }}>
+                                  <Column gap="s" style={{ width: '100%' }}>
                                     {service.details.slice(0, 3).map((detail: string, detailIndex: number) => (
                                       <Flex key={detailIndex} gap="s" vertical="center" style={{ width: '100%' }}>
                                         <Text variant="body-default-s" onBackground="neutral-weak" style={{ flexShrink: 0, width: '12px' }}>•</Text>
-                                        <Text variant="body-default-s" onBackground="neutral-weak" style={{ lineHeight: '1.4', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', width: '100%' }}>{detail}</Text>
+                                        <Text variant="body-default-s" onBackground="neutral-weak" style={{ lineHeight: '1.4', display: 'block', overflow: 'visible', width: '100%' }}>{detail}</Text>
                                       </Flex>
                                     ))}
                                   </Column>

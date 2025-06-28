@@ -17,7 +17,7 @@ export const translations = {
         title: "Servicios",
         services: [
           {
-            title: "Salud y Prevención",
+            title: "Salud, Prevención, Pérdida y Control de Peso",
             description: "Enfoque integral en la prevención y mejora de la salud:",
             details: [
               "Reducción de inflamaciones intestinales",
@@ -110,7 +110,7 @@ export const translations = {
         title: "Services",
         services: [
           {
-            title: "Health and Prevention",
+            title: "Health, Prevention, Weight Loss and Weight Control",
             description: "Comprehensive approach to health prevention and improvement:",
             details: [
               "Reduction of intestinal inflammations",
