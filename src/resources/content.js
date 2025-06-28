@@ -45,13 +45,6 @@ export const getContent = (language = "es") => {
   ];
 
   const home = {
-    featured: {
-      display: true,
-      title: t.home.featured.title,
-      description: t.home.featured.description,
-      button: t.home.featured.button,
-      href: "#coaching-personal-1-a-1",
-    },
     subline: t.home.subline,
   };
 

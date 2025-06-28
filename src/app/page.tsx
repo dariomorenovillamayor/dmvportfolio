@@ -17,36 +17,42 @@ import {
 } from "@once-ui-system/core";
 import { CursorEffect, Footer, LanguageToggle, ThemeToggle } from "@/components";
 import { getContent } from "../resources/content";
+import Link from 'next/link';
+import { useLanguage } from "@/components/LanguageProvider";
 
 // Service icons mapping
 const serviceIcons: { [key: string]: string } = {
   // Spanish services
   "Salud y Prevención": "shieldCheck",
-  "Nutrición Básica": "apple",
   "Nutrición Deportiva": "barbell",
   "Talleres para Grupos": "users",
   "Coaching Personal 1 a 1": "target",
   // English services
   "Health and Prevention": "shieldCheck",
-  "Basic Nutrition": "apple",
   "Sports Nutrition": "barbell",
   "Group Workshops": "users",
   "1-on-1 Personal Coaching": "target",
 };
 
+// Service route mapping
+const serviceRoutes: { [key: string]: string } = {
+  // Spanish services
+  "Salud y Prevención": "/salud-prevencion-control-peso",
+  "Nutrición Deportiva": "/nutricion-deporte-online",
+  "Coaching Personal 1 a 1": "/coaching-nutricional-personalizado",
+  "Talleres para Grupos": "/talleres-grupales-nutricion",
+  // English services
+  "Health and Prevention": "/salud-prevencion-control-peso",
+  "Sports Nutrition": "/nutricion-deporte-online",
+  "1-on-1 Personal Coaching": "/coaching-nutricional-personalizado",
+  "Group Workshops": "/talleres-grupales-nutricion",
+};
+
 export default function Page() {
-  const [language, setLanguage] = useState("es");
-  const [currentContent, setCurrentContent] = useState(getContent("es"));
+  const { language, setLanguage } = useLanguage();
+  const [currentContent, setCurrentContent] = useState(getContent(language));
 
   useEffect(() => {
-    const storedLanguage = localStorage.getItem("language");
-    if (storedLanguage) {
-      setLanguage(storedLanguage);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("language", language);
     setCurrentContent(getContent(language));
   }, [language]);
 
@@ -55,29 +61,6 @@ export default function Page() {
   return (
     <>
       <CursorEffect />
-      <Flex
-        position="fixed"
-        top="16"
-        horizontal="center"
-        fillWidth
-        zIndex={10}
-      >
-        <Flex
-          background="page"
-          border="neutral-alpha-weak"
-          radius="m-4"
-          shadow="l"
-          padding="4"
-          horizontal="center"
-          zIndex={1}
-        >
-          <Flex gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
-            <ThemeToggle />
-            <Line background="neutral-alpha-medium" vert maxHeight="24" />
-            <LanguageToggle language={language} setLanguage={setLanguage} />
-          </Flex>
-        </Flex>
-      </Flex>
       <Flex as="main" horizontal="center" fillWidth>
         <div className="main-container">
           <Grid columns="12" mobileColumns="1" paddingY="40" gap="xl" className="hero-section">
@@ -129,78 +112,163 @@ export default function Page() {
               </Column>
 
               {/* Biography */}
-              <Text variant="body-default-l" onBackground="neutral-weak" wrap="balance" gap="l" style={{ marginBottom: '32px' }}>
+              <Text
+                variant="body-default-xl"
+                onBackground="neutral-weak"
+                wrap="balance"
+                gap="l"
+                style={{
+                  marginBottom: '32px',
+                  maxWidth: '1200px',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                  display: 'inline-block',
+                  textAlign: 'left'
+                }}
+              >
                 {home.subline}
               </Text>
-
-              {/* Featured Service */}
-              <Column gap="l"></Column>
-              {home.featured.display && (
-                <Card padding="l">
-                  <Column gap="s">
-                    <Column horizontal="center" gap="l">
-                      <Heading variant="display-strong-m">{home.featured.title}</Heading>
-                      <Text variant="body-default-l" onBackground="neutral-weak" wrap="balance">
-                        {home.featured.description}
-                      </Text>
-                      <Button
-                        href={home.featured.href}
-                        suffixIcon="arrowRight"
-                        label={home.featured.button}
-                        size="m"
-                        weight="default"
-                        variant="primary"
-                        data-border="rounded"
-                      />
-                    </Column>
-                  </Column>
-                </Card>
-              )}
 
               {/* Services Section */}
               {about.services.display && (
                 <Column fillWidth gap="l" id="services" style={{ paddingTop: '32px' }}>
-                  <Flex gap="m" vertical="center" style={{ flexWrap: 'nowrap', alignItems: 'center' }}>
+                  <Flex gap="m" vertical="center" horizontal="center" style={{ flexWrap: 'nowrap', alignItems: 'center' }}>
                     <Icon name="heart" size="xl" onBackground="brand-weak" style={{ flexShrink: 0 }} />
                     <Heading variant="display-strong-m" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
                       {about.services.title}
                     </Heading>
                   </Flex>
-                  <Grid columns="2" mobileColumns="1" gap="xl">
-                    {about.services.services.map((service: { title: string; description: string; details?: string[] }, index: number) => (
-                      <Card
-                        key={index}
-                        id={service.title === "Coaching Personal 1 a 1" || service.title === "1-on-1 Personal Coaching" ? "coaching-personal-1-a-1" : undefined}
-                        padding="l"
-                        gap="l"
-                        radius="l"
-                        border="neutral-alpha-weak"
-                        background="neutral-alpha-weak"
-                      >
-                        <Flex gap="l" vertical="center" horizontal="center">
-                          <Icon
-                            name={serviceIcons[service.title as keyof typeof serviceIcons] || "star"}
-                            size="xl"
-                            onBackground="brand-weak"
-                          />
-                          <Column gap="m" horizontal="center" fillWidth>
-                            <Heading variant="heading-strong-xl" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', textAlign: 'center' }}>{service.title}</Heading>
-                            <Text variant="body-default-m" onBackground="neutral-weak">{service.description}</Text>
-                            {service.details && (
-                              <Column gap="s">
-                                {service.details.map((detail: string, detailIndex: number) => (
-                                  <Flex key={detailIndex} gap="s" vertical="center">
-                                    <Text variant="body-default-s" onBackground="neutral-weak" style={{ flexShrink: 0, width: '12px' }}>•</Text>
-                                    <Text variant="body-default-s" onBackground="neutral-weak">{detail}</Text>
+                  <Flex horizontal="center" fillWidth>
+                    <Grid 
+                      columns="2" 
+                      mobileColumns="1" 
+                      tabletColumns="1"
+                      gap="xl" 
+                      maxWidth="l"
+                      style={{ 
+                        width: '100%',
+                        maxWidth: 'var(--responsive-width-l)',
+                        margin: '0 auto',
+                        alignItems: 'stretch',
+                      }}
+                    >
+                      {about.services.services.map((service: { title: string; description: string; details?: string[] }, index: number) => {
+                        const route = serviceRoutes[service.title];
+                        const isClickable = !!route;
+                        
+                        const cardContent = (
+                          <Card
+                            key={index}
+                            id={service.title === "Coaching Personal 1 a 1" || service.title === "1-on-1 Personal Coaching" ? "coaching-personal-1-a-1" : undefined}
+                            padding="l"
+                            gap="l"
+                            radius="l"
+                            border="neutral-alpha-weak"
+                            background="neutral-alpha-weak"
+                            style={{
+                              cursor: isClickable ? 'pointer' : 'default',
+                              transition: 'all 0.2s ease-in-out',
+                              height: '550px',
+                              width: '100%',
+                              maxWidth: '480px',
+                              minWidth: '320px',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              boxSizing: 'border-box',
+                              overflow: 'hidden',
+                              ...(isClickable && {
+                                ':hover': {
+                                  transform: 'translateY(-2px)',
+                                  boxShadow: '0 8px 25px rgba(0, 0, 0, 0.15)',
+                                  border: '1px solid var(--brand-alpha-medium)',
+                                }
+                              })
+                            }}
+                          >
+                            <Flex gap="l" vertical="center" horizontal="center" style={{ flex: 1, flexDirection: 'column', overflow: 'hidden', width: '100%' }}>
+                              <Icon
+                                name={serviceIcons[service.title as keyof typeof serviceIcons] || "star"}
+                                size="xl"
+                                onBackground="brand-weak"
+                                style={{ marginBottom: '8px' }}
+                              />
+                              <Column gap="m" horizontal="center" fillWidth style={{ flex: 1, justifyContent: 'center', width: '100%' }}>
+                                <Heading 
+                                  variant="heading-strong-xl" 
+                                  style={{ 
+                                    textAlign: 'center',
+                                    lineHeight: '1.2',
+                                    marginBottom: '8px',
+                                    whiteSpace: 'nowrap',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    width: '100%'
+                                  }}
+                                >
+                                  {service.title}
+                                </Heading>
+                                <Text 
+                                  variant="body-default-m" 
+                                  onBackground="neutral-weak"
+                                  style={{ 
+                                    textAlign: 'center',
+                                    lineHeight: '1.5',
+                                    display: '-webkit-box',
+                                    WebkitLineClamp: 3,
+                                    WebkitBoxOrient: 'vertical',
+                                    overflow: 'hidden',
+                                    width: '100%'
+                                  }}
+                                >
+                                  {service.description}
+                                </Text>
+                                {service.details && (
+                                  <Column gap="s" style={{ marginTop: '16px', width: '100%' }}>
+                                    {service.details.slice(0, 3).map((detail: string, detailIndex: number) => (
+                                      <Flex key={detailIndex} gap="s" vertical="center" style={{ width: '100%' }}>
+                                        <Text variant="body-default-s" onBackground="neutral-weak" style={{ flexShrink: 0, width: '12px' }}>•</Text>
+                                        <Text variant="body-default-s" onBackground="neutral-weak" style={{ lineHeight: '1.4', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', width: '100%' }}>{detail}</Text>
+                                      </Flex>
+                                    ))}
+                                  </Column>
+                                )}
+                                {isClickable && (
+                                  <Flex gap="s" vertical="center" horizontal="center" style={{ marginTop: '16px' }}>
+                                    <Text variant="body-default-s" onBackground="brand-weak" style={{ fontSize: '14px' }}>
+                                      {language === "es" ? "Haz clic para más información" : "Click for more information"}
+                                    </Text>
+                                    <Icon name="arrowRight" size="s" onBackground="brand-weak" />
                                   </Flex>
-                                ))}
+                                )}
                               </Column>
-                            )}
-                          </Column>
-                        </Flex>
-                      </Card>
-                    ))}
-                  </Grid>
+                            </Flex>
+                          </Card>
+                        );
+
+                        return isClickable ? (
+                          <Link key={index} href={route} style={{ textDecoration: 'none', color: 'inherit', height: '100%', display: 'block' }}>
+                            {cardContent}
+                          </Link>
+                        ) : (
+                          cardContent
+                        );
+                      })}
+                    </Grid>
+                  </Flex>
+                  
+                  {/* FAQ Link */}
+                  <Flex horizontal="center" style={{ marginTop: '24px' }}>
+                    <Link href="/preguntas-frecuentes" style={{ textDecoration: 'none' }}>
+                      <Button
+                        variant="secondary"
+                        size="l"
+                        prefixIcon="help"
+                        style={{ fontSize: '1.25rem', padding: '20px 40px' }}
+                      >
+                        {language === "es" ? "Preguntas Frecuentes" : "FAQ"}
+                      </Button>
+                    </Link>
+                  </Flex>
                 </Column>
               )}
             </Column>

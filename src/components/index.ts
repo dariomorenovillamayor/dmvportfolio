@@ -5,9 +5,9 @@ export { Providers } from "@/components/Providers";
 export { ThemeToggle } from "@/components/ThemeToggle";
 export { LanguageToggle } from "@/components/LanguageToggle";
 export { CursorEffect } from "@/components/CursorEffect";
+export { LanguageProvider, useLanguage } from "@/components/LanguageProvider";
 
 // Other components
 export { Mailchimp } from "@/components/Mailchimp";
 export { CustomMDX } from "@/components/mdx";
 export { ScrollToHash } from "@/components/ScrollToHash";
-export { ProjectCard } from "@/components/ProjectCard";

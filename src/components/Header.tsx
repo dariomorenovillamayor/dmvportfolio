@@ -3,12 +3,14 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Fade, Flex, Line, ToggleButton } from "@once-ui-system/core";
+import { Fade, Flex, Line, ToggleButton, Button } from "@once-ui-system/core";
+import Link from 'next/link';
 
 import { routes, display, person, about } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
 import styles from "./Header.module.scss";
+import { useLanguage } from "@/components/LanguageProvider";
 
 type TimeDisplayProps = {
   timeZone: string;
@@ -45,18 +47,7 @@ export default TimeDisplay;
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
-  const [language, setLanguage] = useState("es");
-
-  useEffect(() => {
-    const storedLanguage = localStorage.getItem("language");
-    if (storedLanguage) {
-      setLanguage(storedLanguage);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("language", language);
-  }, [language]);
+  const { language, setLanguage } = useLanguage();
 
   return (
     <>
@@ -92,6 +83,18 @@ export const Header = () => {
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               <LanguageToggle language={language} setLanguage={setLanguage} />
+              {pathname !== "/" && (
+                <>
+                  <Line background="neutral-alpha-medium" vert maxHeight="24" />
+                  <Link href="/" style={{ textDecoration: 'none' }}>
+                    <Button
+                      variant="secondary"
+                      size="s"
+                      prefixIcon="home"
+                    />
+                  </Link>
+                </>
+              )}
             </Flex>
           </Flex>
         </Flex>

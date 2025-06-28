@@ -3,18 +3,13 @@ export const translations = {
     person: {
       firstName: "Dario",
       lastName: "Moreno V.",
-      role: "Dietista-Nutricionista",
+      role: "Nutricionista",
       location: "Europe/Madrid",
       languages: ["Español", "English"],
     },
     home: {
       title: "Dario Moreno V. - Nutricionista",
       description: "Portfolio profesional de Dario Moreno Villamayor, especialista en nutrición y salud",
-      featured: {
-        title: "Servicio destacado: Coaching Personal 1 a 1",
-        description: "Obtén coaching personalizado 1 a 1 con Dario. Transforma tu salud y alcanza tus objetivos de bienestar con orientación experta y apoyo continuo.",
-        button: "Conoce más",
-      },
       subline: "Dario es un nutricionista especializado en salud preventiva, nutrición deportiva y coaching personal. Su misión es ayudar a las personas a alcanzar sus objetivos de salud y bienestar.",
     },
     about: {
@@ -29,16 +24,6 @@ export const translations = {
               "Optimización de digestiones",
               "Mejora de la salud cardiovascular",
               "Optimización del perfil lipídico"
-            ],
-          },
-          {
-            title: "Nutrición Básica",
-            description: "Fundamentos nutricionales para una vida saludable:",
-            details: [
-              "Mejora de la composición corporal",
-              "Prevención de obesidad y sobrepeso",
-              "Tratamiento de trastornos alimentarios",
-              "Coaching nutricional personalizado"
             ],
           },
           {
@@ -118,11 +103,6 @@ export const translations = {
     home: {
       title: "Dario Moreno V. - Nutritionist",
       description: "Professional portfolio of Dario Moreno Villamayor, nutrition and health specialist",
-      featured: {
-        title: "Featured service: 1-on-1 Personal Coaching",
-        description: "Get personalized 1-on-1 coaching with Dario. Transform your health and achieve your wellness goals with expert guidance and continuous support.",
-        button: "Learn More",
-      },
       subline: "Dario is a nutritionist specialized in preventive health, sports nutrition and personal coaching. His mission is to help people achieve their health and wellness goals.",
     },
     about: {
@@ -137,16 +117,6 @@ export const translations = {
               "Digestion optimization",
               "Cardiovascular health improvement",
               "Lipid profile optimization"
-            ],
-          },
-          {
-            title: "Basic Nutrition",
-            description: "Nutritional fundamentals for a healthy life:",
-            details: [
-              "Body composition improvement",
-              "Obesity and overweight prevention",
-              "Eating disorder treatment",
-              "Personalized nutritional coaching"
             ],
           },
           {

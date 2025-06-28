@@ -6,8 +6,11 @@ const baseURL = "https://demo.magic-portfolio.com";
 const routes = {
   "/": true,
   "/gallery": false,
-  "/blog": true,
-  "/work": true,
+  "/salud-prevencion-control-peso": true,
+  "/nutricion-deporte-online": true,
+  "/coaching-nutricional-personalizado": true,
+  "/talleres-grupales-nutricion": true,
+  "/preguntas-frecuentes": true,
 };
 
 const display = {

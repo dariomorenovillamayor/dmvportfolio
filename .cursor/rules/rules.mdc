@@ -1,0 +1,110 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Cursor Rules for Clean C#/.NET8/MAUI Development
+
+## 🧠 General Philosophy
+- Write as a senior developer with experience in both QA automation and software development.
+- Every code block must compile with no warnings or errors.
+- Follow the best coding practices for .NET 8 and MAUI.
+- Assume that all code will be used in a production-quality app.
+- Prioritize performance, readability, and maintainability.
+
+---
+
+## 🧹 Clean Code & Architecture
+
+- ✅ Apply Clean Architecture: Domain, Application, Infrastructure, UI layers.
+- ✅ Follow SOLID principles.
+- ✅ Respect the DRY and KISS principles.
+- ✅ Use dependency injection (no service locators or statics).
+- ✅ Avoid business logic in the UI layer (especially MAUI `*.xaml.cs` code-behind).
+- ✅ Each class and method should do one thing, and do it well.
+
+---
+
+## 🧪 Testability & QA
+
+- ✅ All business logic must be testable without UI.
+- ✅ No hardcoded sleeps, waits, or static delays.
+- ✅ Use interfaces and abstraction to allow mocking.
+- ✅ Code must be deterministic and free from side effects where possible.
+- ✅ Methods should be small, predictable, and isolated.
+
+---
+
+## 📐 C# Language Features & Practices
+
+- ✅ Prefer latest C# features (e.g. file-scoped namespaces, pattern matching, `required` properties).
+- ✅ Use nullability (`#nullable enable`) and null guards.
+- ✅ Use primary constructors and init-only properties when appropriate.
+- ✅ Prefer `switch` expressions over long `if-else` chains.
+- ✅ Always make use of expression-bodied members when it improves readability.
+- ✅ Avoid public fields — use properties.
+- ✅ Avoid magic strings/numbers; use constants or enums.
+
+---
+
+## 🖼️ MAUI-Specific Rules
+
+- ✅ Use MVVM: never bind directly to code-behind.
+- ✅ Avoid UI logic in `*.xaml.cs`; use ViewModels and Commands.
+- ✅ Use `BindableProperty` and `INotifyPropertyChanged` for reactive UIs.
+- ✅ Organize resources: use styles, themes, and merged dictionaries.
+- ✅ Avoid excessive use of third-party UI packages unless necessary.
+- ✅ Always ensure UI components are responsive on all form factors.
+
+---
+
+## 🧵 Async and Multithreading
+
+- ✅ All I/O operations must use `async/await`.
+- ✅ Never block on async code (`.Result`, `.Wait()`).
+- ✅ Prefer `ConfigureAwait(false)` in library code.
+- ✅ Validate threading context for UI updates (e.g., `MainThread.BeginInvokeOnMainThread` in MAUI).
+
+---
+
+## 🧰 Tooling and Build Rules
+
+- ✅ Code must compile with `dotnet build` on .NET 8.
+- ✅ Use nullable reference types (`<Nullable>enable</Nullable>`).
+- ✅ Use `StyleCop.Analyzers` and/or Roslyn analyzers when applicable.
+- ✅ No compiler warnings are allowed (treat warnings as errors).
+- ✅ All NuGet packages should be the latest stable release.
+
+---
+
+## 📚 Naming and Comments
+
+- ✅ Use PascalCase for types, methods, and public properties.
+- ✅ Use camelCase for private fields and method parameters.
+- ✅ Use `_underscorePrefix` for private fields only when necessary.
+- ✅ Use XML doc comments for public APIs.
+- ✅ Avoid redundant comments — code should explain itself.
+
+---
+
+## 🛑 Forbidden Practices
+
+- ❌ Static classes for business logic (except utility/helpers).
+- ❌ Direct access to `HttpClient` — use typed `HttpClientFactory`.
+- ❌ Long methods (prefer under 25 lines).
+- ❌ Circular dependencies.
+- ❌ Logic in constructors (keep them light).
+
+---
+
+## ✅ Output Requirements
+
+- All code must compile with .NET 8 SDK.
+- No runtime or build errors.
+- No unreferenced usings or dead code.
+- No hardcoded strings where localization applies.
+- When generating code: include using statements, namespaces, and class context.
+
+---
+
+
