@@ -1,4 +1,3 @@
-import { Logo } from "@once-ui-system/core";
 import { translations } from "./translations";
 
 // Function to get content based on current language

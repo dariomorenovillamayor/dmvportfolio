@@ -209,6 +209,11 @@ a, button, [role="button"], .cursor-effect-hover {
   --border-brand-alpha-medium: var(--brand-400);
 }
 
+[data-theme="light"] {
+  --background-page: #b6c96b;
+  --background-page-rgb: 182, 201, 107;
+}
+
 .main-container {
   width: 100%;
   max-width: 1200px;
