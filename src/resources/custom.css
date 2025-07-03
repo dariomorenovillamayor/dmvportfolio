@@ -341,3 +341,20 @@ a, button, [role="button"], .cursor-effect-hover {
     text-align: center;
   }
 }
+
+#services .Card {
+  padding: 1rem 0.75rem !important;
+}
+
+@media (max-width: 768px) {
+  #services .Card {
+    padding: 1.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-details-list {
+    text-align: left !important;
+    align-items: flex-start !important;
+  }
+}

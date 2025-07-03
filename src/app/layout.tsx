@@ -93,6 +93,12 @@ export default async function RootLayout({
             `,
           }}
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <Providers>
         <LanguageProvider>
@@ -115,8 +121,8 @@ export default async function RootLayout({
                 width: effects.gradient.width as any,
                 height: effects.gradient.height as any,
                 tilt: effects.gradient.tilt as any,
-                colorStart: effects.gradient.colorStart,
-                colorEnd: effects.gradient.colorEnd,
+                colorStart: '#b2c47a',
+                colorEnd: '#ffffff',
               }}
               dots={{
                 display: effects.dots.display,

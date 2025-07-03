@@ -131,31 +131,42 @@ export default function Page() {
 
               {/* Services Section */}
               {about.services.display && (
-                <Column fillWidth gap="l" id="services" style={{ paddingTop: '32px' }}>
-                  <Flex gap="m" vertical="center" horizontal="center" style={{ flexWrap: 'nowrap', alignItems: 'center' }}>
+                <Column fillWidth gap="l" id="services">
+                  <Flex
+                    gap="m"
+                    vertical="center"
+                    horizontal="center"
+                    style={{
+                      flexWrap: 'nowrap',
+                      alignItems: 'center',
+                      ...(typeof window !== 'undefined' && window.innerWidth <= 768
+                        ? { flexDirection: 'column', textAlign: 'center', gap: '0.5rem' }
+                        : {}),
+                    }}
+                  >
                     <Icon name="heart" size="xl" onBackground="brand-weak" style={{ flexShrink: 0 }} />
                     <Heading variant="display-strong-m" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
                       {about.services.title}
                     </Heading>
                   </Flex>
                   <Flex horizontal="center" fillWidth>
-                    <Grid 
-                      columns="2" 
-                      mobileColumns="1" 
+                    <Grid
+                      columns="2"
+                      mobileColumns="1"
                       tabletColumns="1"
-                      gap="xl" 
+                      gap="xl"
                       maxWidth="l"
-                      style={{ 
+                      style={{
                         width: '100%',
                         maxWidth: 'var(--responsive-width-l)',
                         margin: '0 auto',
                         alignItems: 'stretch',
+                        justifyContent: 'center',
                       }}
                     >
                       {about.services.services.map((service: { title: string; description: string; details?: string[] }, index: number) => {
                         const route = serviceRoutes[service.title];
                         const isClickable = !!route;
-                        
                         const cardContent = (
                           <Card
                             key={index}
@@ -168,8 +179,8 @@ export default function Page() {
                             style={{
                               cursor: isClickable ? 'pointer' : 'default',
                               transition: 'all 0.2s ease-in-out',
-                              minHeight: '600px',
-                              maxHeight: '600px',
+                              minHeight: typeof window !== 'undefined' && window.innerWidth <= 768 ? '320px' : '560px',
+                              maxHeight: typeof window !== 'undefined' && window.innerWidth <= 768 ? '380px' : '600px',
                               width: '100%',
                               maxWidth: '480px',
                               minWidth: '320px',
@@ -177,6 +188,7 @@ export default function Page() {
                               flexDirection: 'column',
                               boxSizing: 'border-box',
                               overflow: 'hidden',
+                              padding: typeof window !== 'undefined' && window.innerWidth <= 768 ? '0.5rem' : undefined,
                             }}
                           >
                             <Flex gap="0" vertical="center" horizontal="center" style={{ flex: '0 1 90%', flexDirection: 'column', overflow: 'hidden', width: '100%' }}>
@@ -185,7 +197,15 @@ export default function Page() {
                                 size="xl"
                                 onBackground="brand-weak"
                               />
-                              <Column gap="m" horizontal="center" fillWidth style={{ flex: '0 1 100%', justifyContent: 'center', width: '100%', marginTop: '0px' }}>
+                              <Column gap="m" horizontal="center" fillWidth style={{
+                                flex: '0 1 100%',
+                                justifyContent: 'center',
+                                width: '100%',
+                                marginTop: '0px',
+                                ...(typeof window !== 'undefined' && window.innerWidth <= 768
+                                  ? { textAlign: 'center', alignItems: 'center' }
+                                  : {}),
+                              }}>
                                 <Heading 
                                   variant="heading-strong-xl" 
                                   style={{ 
@@ -216,7 +236,7 @@ export default function Page() {
                                   {service.description}
                                 </Text>
                                 {service.details && (
-                                  <Column gap="s" style={{ width: '100%' }}>
+                                  <Column gap="s" className="card-details-list" style={{ width: '100%' }}>
                                     {service.details.slice(0, 3).map((detail: string, detailIndex: number) => (
                                       <Flex key={detailIndex} gap="s" vertical="center" style={{ width: '100%' }}>
                                         <Text variant="body-default-s" onBackground="neutral-weak" style={{ flexShrink: 0, width: '12px' }}>•</Text>
@@ -237,7 +257,6 @@ export default function Page() {
                             </Flex>
                           </Card>
                         );
-
                         return isClickable ? (
                           <Link key={index} href={route} style={{ textDecoration: 'none', color: 'inherit', height: '100%', display: 'block' }}>
                             {cardContent}
