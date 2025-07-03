@@ -370,3 +370,16 @@ body {
 .font-code {
   font-family: var(--font-heading), var(--font-body), var(--font-label), var(--font-code), sans-serif !important;
 }
+
+:root {
+  --font-body: Inter, sans-serif !important;
+  --font-heading: Inter, sans-serif !important;
+  --font-label: Inter, sans-serif !important;
+  --font-code: Inter, monospace !important;
+}
+
+*,
+*::before,
+*::after {
+  font-family: var(--font-heading), var(--font-body), var(--font-label), var(--font-code), Inter, sans-serif !important;
+}
