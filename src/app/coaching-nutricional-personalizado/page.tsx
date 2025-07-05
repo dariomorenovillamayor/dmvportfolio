@@ -16,6 +16,7 @@ import {
 import { CursorEffect, Footer, LanguageToggle, ThemeToggle, useContact } from "@/components";
 import { getContent } from "../../resources/content";
 import { useLanguage } from "@/components/LanguageProvider";
+import { translations } from "../../resources/translations";
 
 export default function CoachingPersonalizadoPage() {
   const { language, setLanguage } = useLanguage();
@@ -102,6 +103,7 @@ export default function CoachingPersonalizadoPage() {
   };
 
   const currentPageContent = content[language as keyof typeof content];
+  const t = translations[language] || translations.es;
 
   return (
     <>
@@ -186,9 +188,9 @@ export default function CoachingPersonalizadoPage() {
             {/* Contact CTA */}
             <Card padding="xl" radius="l" border="brand-alpha-medium" background="brand-weak">
               <Column gap="l" horizontal="center">
-                <Heading variant="display-strong-m" style={{ textAlign: 'center' }}>¿Interesado en coaching personalizado?</Heading>
+                <Heading variant="display-strong-m" style={{ textAlign: 'center' }}>{t.coachingCtaTitle}</Heading>
                 <Text variant="body-default-l" onBackground="neutral-weak" style={{ textAlign: 'center' }} wrap="balance">
-                  Contacta con Darío para más información sobre este servicio premium
+                  {t.coachingCtaSubtitle}
                 </Text>
                 <Flex gap="m" wrap>
                   <Button
@@ -197,7 +199,7 @@ export default function CoachingPersonalizadoPage() {
                     size="l"
                     prefixIcon="email"
                   >
-                    Contactar por Email
+                    {t.contactButton}
                   </Button>
                   <Button
                     href="/"
@@ -205,7 +207,7 @@ export default function CoachingPersonalizadoPage() {
                     size="l"
                     prefixIcon="arrowLeft"
                   >
-                    Volver al Inicio
+                    {t.backButton}
                   </Button>
                 </Flex>
               </Column>

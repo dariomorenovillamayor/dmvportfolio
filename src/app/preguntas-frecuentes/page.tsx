@@ -16,6 +16,7 @@ import {
 import { CursorEffect, Footer, LanguageToggle, ThemeToggle, useContact } from "@/components";
 import { getContent } from "../../resources/content";
 import { useLanguage } from "@/components/LanguageProvider";
+import { translations } from "../../resources/translations";
 
 export default function FAQPage() {
   const { language, setLanguage } = useLanguage();
@@ -27,6 +28,8 @@ export default function FAQPage() {
   }, [language]);
 
   const { person, social } = currentContent;
+
+  const t = translations[language] || translations.es;
 
   const content = {
     es: {
@@ -134,9 +137,9 @@ export default function FAQPage() {
             {/* Contact CTA */}
             <Card padding="xl" radius="l" border="brand-alpha-medium" background="brand-weak">
               <Column gap="l" horizontal="center">
-                <Heading variant="display-strong-m" style={{ textAlign: 'center' }}>¿Tienes más preguntas?</Heading>
+                <Heading variant="display-strong-m" style={{ textAlign: 'center' }}>{t.faqCtaTitle}</Heading>
                 <Text variant="body-default-l" onBackground="neutral-weak" style={{ textAlign: 'center' }} wrap="balance">
-                  No dudes en contactar con Darío para resolver cualquier duda adicional
+                  {t.faqCtaSubtitle}
                 </Text>
                 <Flex gap="m" wrap>
                   <Button
@@ -145,7 +148,7 @@ export default function FAQPage() {
                     size="l"
                     prefixIcon="email"
                   >
-                    Contactar por Email
+                    {t.contactButton}
                   </Button>
                   <Button
                     href="/"
@@ -153,7 +156,7 @@ export default function FAQPage() {
                     size="l"
                     prefixIcon="arrowLeft"
                   >
-                    Volver al Inicio
+                    {t.backButton}
                   </Button>
                 </Flex>
               </Column>

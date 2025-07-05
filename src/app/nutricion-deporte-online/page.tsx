@@ -16,6 +16,7 @@ import {
 import { CursorEffect, Footer, LanguageToggle, ThemeToggle, useContact } from "@/components";
 import { getContent } from "../../resources/content";
 import { useLanguage } from "@/components/LanguageProvider";
+import { translations } from "../../resources/translations";
 
 export default function NutricionDeporteOnlinePage() {
   const { language, setLanguage } = useLanguage();
@@ -160,6 +161,7 @@ export default function NutricionDeporteOnlinePage() {
   };
 
   const currentPageContent = content[language as keyof typeof content];
+  const t = translations[language] || translations.es;
 
   return (
     <>
@@ -260,9 +262,9 @@ export default function NutricionDeporteOnlinePage() {
             {/* Contact CTA */}
             <Card padding="xl" radius="l" border="brand-alpha-medium" background="brand-weak">
               <Column gap="l" horizontal="center">
-                <Heading variant="display-strong-m" style={{ textAlign: 'center' }}>¿Listo para optimizar tu rendimiento?</Heading>
+                <Heading variant="display-strong-m" style={{ textAlign: 'center' }}>{t.sportsCtaTitle}</Heading>
                 <Text variant="body-default-l" onBackground="neutral-weak" style={{ textAlign: 'center' }} wrap="balance">
-                  Contacta con Darío para comenzar tu transformación deportiva
+                  {t.sportsCtaSubtitle}
                 </Text>
                 <Flex gap="m" wrap>
                   <Button
@@ -271,7 +273,7 @@ export default function NutricionDeporteOnlinePage() {
                     size="l"
                     prefixIcon="email"
                   >
-                    Contactar por Email
+                    {t.contactButton}
                   </Button>
                   <Button
                     href="/"
@@ -279,7 +281,7 @@ export default function NutricionDeporteOnlinePage() {
                     size="l"
                     prefixIcon="arrowLeft"
                   >
-                    Volver al Inicio
+                    {t.backButton}
                   </Button>
                 </Flex>
               </Column>

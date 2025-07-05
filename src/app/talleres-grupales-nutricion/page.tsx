@@ -16,6 +16,7 @@ import {
 import { CursorEffect, Footer, LanguageToggle, ThemeToggle, useContact } from "@/components";
 import { getContent } from "../../resources/content";
 import { useLanguage } from "@/components/LanguageProvider";
+import { translations } from "../../resources/translations";
 
 export default function TalleresGrupalesPage() {
   const { language, setLanguage } = useLanguage();
@@ -132,6 +133,7 @@ export default function TalleresGrupalesPage() {
   };
 
   const currentPageContent = content[language as keyof typeof content];
+  const t = translations[language] || translations.es;
 
   return (
     <>
@@ -231,7 +233,7 @@ export default function TalleresGrupalesPage() {
                     size="l"
                     prefixIcon="email"
                   >
-                    Contactar por Email
+                    {t.contactButton}
                   </Button>
                   <Button
                     href="/"
@@ -239,7 +241,7 @@ export default function TalleresGrupalesPage() {
                     size="l"
                     prefixIcon="arrowLeft"
                   >
-                    Volver al Inicio
+                    {t.backButton}
                   </Button>
                 </Flex>
               </Column>
