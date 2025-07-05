@@ -103,7 +103,7 @@ export default function CoachingPersonalizadoPage() {
   };
 
   const currentPageContent = content[language as keyof typeof content];
-  const t = translations[language] || translations.es;
+  const t = translations[language as 'es' | 'en'] || translations.es;
 
   return (
     <>

@@ -12,7 +12,7 @@ export const getContent = (language = "es") => {
     },
     role: t.person.role,
     avatar: "/images/avatar.jpeg",
-    email: "dario@example.com",
+    email: "nutriciondariomv@gmail.com",
     location: t.person.location,
     languages: t.person.languages,
   };

@@ -29,7 +29,7 @@ export default function FAQPage() {
 
   const { person, social } = currentContent;
 
-  const t = translations[language] || translations.es;
+  const t = translations[language as 'es' | 'en'] || translations.es;
 
   const content = {
     es: {
