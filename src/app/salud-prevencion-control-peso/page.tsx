@@ -47,6 +47,7 @@ export default function SaludPrevencionPage() {
           title: "Plan de Salud y Prevención",
           price: "180€",
           period: "cada 3 meses",
+          monthlyPrice: "60€",
           features: [
             "Programa semanal de nutrición personalizado, modificado y revisado cada mes",
             "Planes adaptados a tus gustos e intolerancias",
@@ -59,6 +60,7 @@ export default function SaludPrevencionPage() {
           title: "Plan de Salud y Prevención INTEGRAL",
           price: "210€",
           period: "cada 3 meses",
+          monthlyPrice: "70€",
           features: [
             "Programa semanal de nutrición personalizado, modificado cada 4 semanas y revisado cada 2",
             "Planes adaptados a tus gustos e intolerancias",
@@ -114,6 +116,7 @@ export default function SaludPrevencionPage() {
           title: "Health and Prevention Plan",
           price: "180€",
           period: "every 3 months",
+          monthlyPrice: "60€",
           features: [
             "Weekly personalized nutrition program, modified and reviewed monthly",
             "Plans adapted to your tastes and intolerances",
@@ -126,6 +129,7 @@ export default function SaludPrevencionPage() {
           title: "COMPREHENSIVE Health and Prevention Plan",
           price: "210€",
           period: "every 3 months",
+          monthlyPrice: "70€",
           features: [
             "Weekly personalized nutrition program, modified every 4 weeks and reviewed every 2",
             "Plans adapted to your tastes and intolerances",
@@ -217,6 +221,7 @@ export default function SaludPrevencionPage() {
                   <Column gap="m" horizontal="center" style={{ width: '100%' }}>
                     <Heading variant="heading-strong-xl" style={{ textAlign: 'center', marginBottom: '8px', width: '100%' }}>{plan.title}</Heading>
                     <Text variant="display-default-l" style={{ textAlign: 'center', color: 'var(--brand-600)', fontWeight: 700 }}>{plan.price} <span style={{ fontWeight: 400, color: 'var(--neutral-600)' }}>/ {plan.period}</span></Text>
+                    <Text variant="body-default-l" style={{ textAlign: 'center', color: 'var(--neutral-600)', fontWeight: 600 }}>({plan.monthlyPrice} {language === 'es' ? 'por mes' : 'per month'})</Text>
                     <Column gap="s" style={{ marginTop: '16px', width: '100%' }}>
                       {plan.features.map((feature, fidx) => (
                         <Flex key={fidx} gap="s" vertical="center" style={{ width: '100%' }}>
