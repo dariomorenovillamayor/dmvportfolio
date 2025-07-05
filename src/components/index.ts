@@ -11,3 +11,6 @@ export { LanguageProvider, useLanguage } from "@/components/LanguageProvider";
 export { Mailchimp } from "@/components/Mailchimp";
 export { CustomMDX } from "@/components/mdx";
 export { ScrollToHash } from "@/components/ScrollToHash";
+export { ContactForm } from "@/components/ContactForm";
+export { ContactPanel } from "@/components/ContactPanel";
+export { ContactProvider, useContact } from "@/components/ContactProvider";

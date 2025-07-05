@@ -13,12 +13,13 @@ import {
   Tag,
   Line
 } from "@once-ui-system/core";
-import { CursorEffect, Footer, LanguageToggle, ThemeToggle } from "@/components";
+import { CursorEffect, Footer, LanguageToggle, ThemeToggle, useContact } from "@/components";
 import { getContent } from "../../resources/content";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export default function TalleresGrupalesPage() {
   const { language, setLanguage } = useLanguage();
+  const { openContact } = useContact();
   const [currentContent, setCurrentContent] = useState(getContent(language));
 
   useEffect(() => {
@@ -225,7 +226,7 @@ export default function TalleresGrupalesPage() {
                 </Text>
                 <Flex gap="m" wrap>
                   <Button
-                    href="mailto:nutriciondariomv@gmail.com"
+                    onClick={() => openContact('talleres-grupales')}
                     variant="primary"
                     size="l"
                     prefixIcon="email"

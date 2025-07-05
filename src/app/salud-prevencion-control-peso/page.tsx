@@ -13,12 +13,13 @@ import {
   Tag,
   Line
 } from "@once-ui-system/core";
-import { CursorEffect, Footer, LanguageToggle, ThemeToggle } from "@/components";
+import { CursorEffect, Footer, LanguageToggle, ThemeToggle, useContact } from "@/components";
 import { getContent } from "../../resources/content";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export default function SaludPrevencionPage() {
   const { language, setLanguage } = useLanguage();
+  const { openContact } = useContact();
   const [currentContent, setCurrentContent] = useState(getContent(language));
 
   useEffect(() => {
@@ -293,7 +294,12 @@ export default function SaludPrevencionPage() {
             {/* Call to Action */}
             <Column gap="m" horizontal="center" style={{ marginTop: '32px' }}>
               <Text variant="display-strong-m" style={{ textAlign: 'center', color: 'var(--brand-600)' }}>{currentPageContent.cta}</Text>
-              <Button href="mailto:info@dariomv.com" size="l" variant="primary" style={{ fontSize: '1.25rem', padding: '1rem 2.5rem', margin: '0 auto' }}>
+              <Button 
+                onClick={() => openContact('salud-prevencion')}
+                size="l" 
+                variant="primary" 
+                style={{ fontSize: '1.25rem', padding: '1rem 2.5rem', margin: '0 auto' }}
+              >
                 {language === 'es' ? 'Contactar' : 'Contact'}
               </Button>
             </Column>

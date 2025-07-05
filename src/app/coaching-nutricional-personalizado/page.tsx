@@ -13,12 +13,13 @@ import {
   Tag,
   Line
 } from "@once-ui-system/core";
-import { CursorEffect, Footer, LanguageToggle, ThemeToggle } from "@/components";
+import { CursorEffect, Footer, LanguageToggle, ThemeToggle, useContact } from "@/components";
 import { getContent } from "../../resources/content";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export default function CoachingPersonalizadoPage() {
   const { language, setLanguage } = useLanguage();
+  const { openContact } = useContact();
   const [currentContent, setCurrentContent] = useState(getContent(language));
 
   useEffect(() => {
@@ -191,7 +192,7 @@ export default function CoachingPersonalizadoPage() {
                 </Text>
                 <Flex gap="m" wrap>
                   <Button
-                    href="mailto:nutriciondariomv@gmail.com"
+                    onClick={() => openContact('coaching-personalizado')}
                     variant="primary"
                     size="l"
                     prefixIcon="email"
