@@ -66,7 +66,24 @@ export default function Page() {
           <Grid columns="12" mobileColumns="1" paddingY="40" gap="xl" className="hero-section">
             {/* Left Column (Sticky) - Avatar and Languages only */}
             <Column data-col-span="4" gap="m" vertical="start" horizontal="end" className="sticky-column mobile-center">
-              <Avatar src={person.avatar} size="xl" />
+              <Avatar 
+                src={person.avatar} 
+                size="xl"
+                style={{
+                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2), inset 0 0 0 3px rgba(255, 255, 255, 0.4), 0 0 20px rgba(134, 239, 172, 0.3)',
+                  transition: 'all 0.3s ease-in-out',
+                  cursor: 'pointer',
+                  animation: 'avatarPulse 3s ease-in-out infinite',
+                }}
+                onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
+                  e.currentTarget.style.transform = 'translateY(-8px) scale(1.05)';
+                  e.currentTarget.style.boxShadow = '0 16px 40px rgba(0, 0, 0, 0.25), inset 0 0 0 3px rgba(255, 255, 255, 0.6), 0 0 30px rgba(134, 239, 172, 0.5)';
+                }}
+                onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.2), inset 0 0 0 3px rgba(255, 255, 255, 0.4), 0 0 20px rgba(134, 239, 172, 0.3)';
+                }}
+              />
               {person.location && (
                 <Flex gap="s" vertical="center">
                   <Icon name="globe" size="l" onBackground="danger-weak" />
@@ -104,6 +121,21 @@ export default function Page() {
                       target="_blank"
                       variant="secondary"
                       prefixIcon={item.icon}
+                      style={{
+                        boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.3)',
+                        background: 'rgba(255, 255, 255, 0.25)',
+                        transition: 'all 0.3s ease-in-out',
+                      }}
+                      onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                        e.currentTarget.style.transform = 'translateY(-4px)';
+                        e.currentTarget.style.boxShadow = '0 12px 32px rgba(0, 0, 0, 0.2), inset 0 0 0 2px rgba(255, 255, 255, 0.5)';
+                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.35)';
+                      }}
+                      onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.3)';
+                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)';
+                      }}
                     >
                       {item.name}
                     </Button>
@@ -178,7 +210,7 @@ export default function Page() {
                             background="neutral-alpha-weak"
                             style={{
                               cursor: isClickable ? 'pointer' : 'default',
-                              transition: 'all 0.2s ease-in-out',
+                              transition: 'all 0.3s ease-in-out',
                               minHeight: typeof window !== 'undefined' && window.innerWidth <= 768 ? '320px' : '560px',
                               maxHeight: typeof window !== 'undefined' && window.innerWidth <= 768 ? '380px' : '600px',
                               width: '100%',
@@ -188,23 +220,39 @@ export default function Page() {
                               flexDirection: 'column',
                               boxSizing: 'border-box',
                               overflow: 'hidden',
-                              padding: typeof window !== 'undefined' && window.innerWidth <= 768 ? '0.5rem' : undefined,
+                              padding: typeof window !== 'undefined' && window.innerWidth <= 768 ? '1.5rem 1rem 0.75rem 1rem' : undefined,
+                              ...(isClickable && {
+                                boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.3)',
+                                transform: 'translateY(0)',
+                                background: 'rgba(255, 255, 255, 0.25)',
+                              }),
+                            }}
+                            onMouseEnter={(e) => {
+                              if (isClickable) {
+                                e.currentTarget.style.transform = 'translateY(-8px)';
+                                e.currentTarget.style.boxShadow = '0 16px 40px rgba(0, 0, 0, 0.2), inset 0 0 0 2px rgba(255, 255, 255, 0.5)';
+                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.35)';
+                              }
+                            }}
+                            onMouseLeave={(e) => {
+                              if (isClickable) {
+                                e.currentTarget.style.transform = 'translateY(0)';
+                                e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.3)';
+                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)';
+                              }
                             }}
                           >
-                            <Flex gap="0" vertical="center" horizontal="center" style={{ flex: '0 1 90%', flexDirection: 'column', overflow: 'hidden', width: '100%' }}>
+                            <Column gap="m" vertical="center" horizontal="center" fillWidth style={{ height: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
                               <Icon
                                 name={serviceIcons[service.title as keyof typeof serviceIcons] || "star"}
                                 size="xl"
                                 onBackground="brand-weak"
+                                style={{ marginTop: '8px' }}
                               />
                               <Column gap="m" horizontal="center" fillWidth style={{
-                                flex: '0 1 100%',
-                                justifyContent: 'center',
+                                textAlign: 'center',
+                                alignItems: 'center',
                                 width: '100%',
-                                marginTop: '0px',
-                                ...(typeof window !== 'undefined' && window.innerWidth <= 768
-                                  ? { textAlign: 'center', alignItems: 'center' }
-                                  : {}),
                               }}>
                                 <Heading 
                                   variant="heading-strong-xl" 
@@ -245,16 +293,28 @@ export default function Page() {
                                     ))}
                                   </Column>
                                 )}
-                                {isClickable && (
-                                  <Flex gap="s" vertical="center" horizontal="center" style={{ marginTop: '16px' }}>
-                                    <Text variant="body-default-s" onBackground="brand-weak" style={{ fontSize: '14px' }}>
-                                      {language === "es" ? "Haz clic para más información" : "Click for more information"}
-                                    </Text>
-                                    <Icon name="arrowRight" size="s" onBackground="brand-weak" />
-                                  </Flex>
-                                )}
                               </Column>
-                            </Flex>
+                              {isClickable && (
+                                <Flex 
+                                  gap="s" 
+                                  vertical="center" 
+                                  horizontal="center" 
+                                  style={{ 
+                                    padding: '10px 16px',
+                                    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+                                    borderRadius: 'var(--radius-m)',
+                                    marginTop: '16px',
+                                    marginBottom: '8px',
+                                    whiteSpace: 'nowrap',
+                                  }}
+                                >
+                                  <Text variant="body-default-m" style={{ fontSize: '13px', fontWeight: 600, color: 'rgba(0, 0, 0, 0.8)', whiteSpace: 'nowrap' }}>
+                                    {language === "es" ? "Haz clic para más información" : "Click for more information"}
+                                  </Text>
+                                  <Icon name="arrowRight" size="s" style={{ color: 'rgba(0, 0, 0, 0.8)' }} />
+                                </Flex>
+                              )}
+                            </Column>
                           </Card>
                         );
                         return isClickable ? (
@@ -275,7 +335,23 @@ export default function Page() {
                         variant="secondary"
                         size="l"
                         prefixIcon="help"
-                        style={{ fontSize: '1.25rem', padding: '20px 40px' }}
+                        style={{ 
+                          fontSize: '1.25rem', 
+                          padding: '20px 40px',
+                          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.3)',
+                          background: 'rgba(255, 255, 255, 0.25)',
+                          transition: 'all 0.3s ease-in-out',
+                        }}
+                        onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                          e.currentTarget.style.transform = 'translateY(-6px)';
+                          e.currentTarget.style.boxShadow = '0 14px 36px rgba(0, 0, 0, 0.2), inset 0 0 0 2px rgba(255, 255, 255, 0.5)';
+                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.35)';
+                        }}
+                        onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                          e.currentTarget.style.transform = 'translateY(0)';
+                          e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.3)';
+                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)';
+                        }}
                       >
                         {language === "es" ? "Preguntas Frecuentes" : "FAQ"}
                       </Button>

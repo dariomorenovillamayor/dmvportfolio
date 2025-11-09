@@ -309,6 +309,18 @@ a, button, [role="button"], .cursor-effect-hover {
   }
 }
 
+@keyframes avatarPulse {
+  0% {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), inset 0 0 0 3px rgba(255, 255, 255, 0.4), 0 0 20px rgba(134, 239, 172, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), inset 0 0 0 3px rgba(255, 255, 255, 0.5), 0 0 30px rgba(134, 239, 172, 0.5);
+  }
+  100% {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), inset 0 0 0 3px rgba(255, 255, 255, 0.4), 0 0 20px rgba(134, 239, 172, 0.3);
+  }
+}
+
 [data-variant="display-strong-xl"] {
   font-size: 4rem;
 }
