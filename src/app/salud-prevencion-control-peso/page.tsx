@@ -45,9 +45,9 @@ export default function SaludPrevencionPage() {
       plans: [
         {
           title: "Plan de Salud y Prevención",
-          price: "180€",
+          price: "210€",
           period: "cada 3 meses",
-          monthlyPrice: "60€",
+          monthlyPrice: "70€",
           features: [
             "Programa semanal de nutrición personalizado, modificado y revisado cada mes",
             "Planes adaptados a tus gustos e intolerancias",
@@ -58,9 +58,9 @@ export default function SaludPrevencionPage() {
         },
         {
           title: "Plan de Salud y Prevención INTEGRAL",
-          price: "210€",
+          price: "240€",
           period: "cada 3 meses",
-          monthlyPrice: "70€",
+          monthlyPrice: "80€",
           features: [
             "Programa semanal de nutrición personalizado, modificado cada 4 semanas y revisado cada 2",
             "Planes adaptados a tus gustos e intolerancias",
@@ -114,9 +114,9 @@ export default function SaludPrevencionPage() {
       plans: [
         {
           title: "Health and Prevention Plan",
-          price: "180€",
+          price: "210",
           period: "every 3 months",
-          monthlyPrice: "60€",
+          monthlyPrice: "70€",
           features: [
             "Weekly personalized nutrition program, modified and reviewed monthly",
             "Plans adapted to your tastes and intolerances",
@@ -127,9 +127,9 @@ export default function SaludPrevencionPage() {
         },
         {
           title: "COMPREHENSIVE Health and Prevention Plan",
-          price: "210€",
+          price: "240€",
           period: "every 3 months",
-          monthlyPrice: "70€",
+          monthlyPrice: "80€",
           features: [
             "Weekly personalized nutrition program, modified every 4 weeks and reviewed every 2",
             "Plans adapted to your tastes and intolerances",
