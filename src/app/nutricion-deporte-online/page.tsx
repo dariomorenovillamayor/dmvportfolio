@@ -58,9 +58,9 @@ export default function NutricionDeporteOnlinePage() {
         },
         {
           title: "Plan de Salud, Nutrición y Deporte Online INTEGRAL",
-          price: "270€",
+          price: "300€",
           period: "cada 3 meses",
-          monthlyPrice: "90€",
+          monthlyPrice: "100€",
           features: [
             "Programa semanal de nutrición personalizado, modificado cada 4 semanas y revisado cada 2",
             "Planes adaptados a tus gustos e intolerancias",
@@ -124,9 +124,9 @@ export default function NutricionDeporteOnlinePage() {
         },
         {
           title: "COMPREHENSIVE Health, Nutrition and Online Sports Plan",
-          price: "270€",
+          price: "300€",
           period: "every 3 months",
-          monthlyPrice: "90€",
+          monthlyPrice: "100€",
           features: [
             "Weekly personalized nutrition program, modified every 4 weeks and reviewed every 2",
             "Plans adapted to your tastes and intolerances",
