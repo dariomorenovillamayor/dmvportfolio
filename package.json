@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
-    "@next/mdx": "^15.3.1",
+    "@next/mdx": "^15.3.6",
     "@once-ui-system/core": "^1.2.4",
     "classnames": "^2.5.1",
     "cookie": "^1.0.2",
     "gray-matter": "^4.0.3",
-    "next": "^15.3.1",
+    "next": "^15.3.6",
     "next-mdx-remote": "^6.0.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -29,7 +29,7 @@
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.6",
     "eslint": "^9.25.0",
-    "eslint-config-next": "^15.3.4",
+    "eslint-config-next": "^15.3.6",
     "typescript": "^5.8.3"
   }
 }
