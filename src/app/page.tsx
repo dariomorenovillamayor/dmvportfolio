@@ -23,12 +23,12 @@ import { useLanguage } from "@/components/LanguageProvider";
 // Service icons mapping
 const serviceIcons: { [key: string]: string } = {
   // Spanish services
-  "Salud, Prevención, Pérdida y Control de Peso": "shieldCheck",
+  "Salud y Prevención": "shieldCheck",
   "Nutrición Deportiva": "barbell",
   "Talleres para Grupos": "users",
   "Coaching Personal 1 a 1": "target",
   // English services
-  "Health, Prevention, Weight Loss and Weight Control": "shieldCheck",
+  "Health and Prevention": "shieldCheck",
   "Sports Nutrition": "barbell",
   "Group Workshops": "users",
   "1-on-1 Personal Coaching": "target",
@@ -37,12 +37,12 @@ const serviceIcons: { [key: string]: string } = {
 // Service route mapping
 const serviceRoutes: { [key: string]: string } = {
   // Spanish services
-  "Salud, Prevención, Pérdida y Control de Peso": "/salud-prevencion-control-peso",
+  "Salud y Prevención": "/salud-prevencion-control-peso",
   "Nutrición Deportiva": "/nutricion-deporte-online",
   "Coaching Personal 1 a 1": "/coaching-nutricional-personalizado",
   "Talleres para Grupos": "/talleres-grupales-nutricion",
   // English services
-  "Health, Prevention, Weight Loss and Weight Control": "/salud-prevencion-control-peso",
+  "Health and Prevention": "/salud-prevencion-control-peso",
   "Sports Nutrition": "/nutricion-deporte-online",
   "1-on-1 Personal Coaching": "/coaching-nutricional-personalizado",
   "Group Workshops": "/talleres-grupales-nutricion",
@@ -70,18 +70,18 @@ export default function Page() {
                 src={person.avatar} 
                 size="xl"
                 style={{
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2), inset 0 0 0 3px rgba(255, 255, 255, 0.4), 0 0 20px rgba(134, 239, 172, 0.3)',
+                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12), inset 0 0 0 3px rgba(255, 255, 255, 0.5), 0 0 24px var(--brand-alpha-medium)',
                   transition: 'all 0.3s ease-in-out',
                   cursor: 'pointer',
                   animation: 'avatarPulse 3s ease-in-out infinite',
                 }}
                 onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
                   e.currentTarget.style.transform = 'translateY(-8px) scale(1.05)';
-                  e.currentTarget.style.boxShadow = '0 16px 40px rgba(0, 0, 0, 0.25), inset 0 0 0 3px rgba(255, 255, 255, 0.6), 0 0 30px rgba(134, 239, 172, 0.5)';
+                  e.currentTarget.style.boxShadow = '0 16px 40px rgba(0, 0, 0, 0.18), inset 0 0 0 3px rgba(255, 255, 255, 0.7), 0 0 34px var(--accent-alpha-medium)';
                 }}
                 onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
                   e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.2), inset 0 0 0 3px rgba(255, 255, 255, 0.4), 0 0 20px rgba(134, 239, 172, 0.3)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.12), inset 0 0 0 3px rgba(255, 255, 255, 0.5), 0 0 24px var(--brand-alpha-medium)';
                 }}
               />
               {person.location && (
@@ -102,7 +102,7 @@ export default function Page() {
             </Column>
 
             {/* Right Column (Scrollable) - All content */}
-            <Column data-col-span="8" gap="0" className="mobile-text-center">
+            <Column data-col-span="8" gap="0">
               {/* Name */}
               <Heading variant="display-strong-l">{person.name}</Heading>
 
@@ -122,19 +122,19 @@ export default function Page() {
                       variant="secondary"
                       prefixIcon={item.icon}
                       style={{
-                        boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.3)',
-                        background: 'rgba(255, 255, 255, 0.25)',
+                        boxShadow: '0 6px 20px rgba(0, 0, 0, 0.08), inset 0 0 0 1px var(--brand-alpha-weak)',
+                        background: 'var(--brand-alpha-weak)',
                         transition: 'all 0.3s ease-in-out',
                       }}
                       onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
                         e.currentTarget.style.transform = 'translateY(-4px)';
-                        e.currentTarget.style.boxShadow = '0 12px 32px rgba(0, 0, 0, 0.2), inset 0 0 0 2px rgba(255, 255, 255, 0.5)';
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.35)';
+                        e.currentTarget.style.boxShadow = '0 12px 32px rgba(0, 0, 0, 0.12), inset 0 0 0 1px var(--brand-alpha-medium)';
+                        e.currentTarget.style.background = 'var(--brand-alpha-medium)';
                       }}
                       onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
                         e.currentTarget.style.transform = 'translateY(0)';
-                        e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.3)';
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)';
+                        e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.08), inset 0 0 0 1px var(--brand-alpha-weak)';
+                        e.currentTarget.style.background = 'var(--brand-alpha-weak)';
                       }}
                     >
                       {item.name}
@@ -163,7 +163,7 @@ export default function Page() {
 
               {/* Services Section */}
               {about.services.display && (
-                <Column fillWidth gap="l" id="services">
+                <Column fillWidth gap="l" id="services" style={{ paddingTop: '32px' }}>
                   <Flex
                     gap="m"
                     vertical="center"
@@ -222,23 +222,23 @@ export default function Page() {
                               overflow: 'hidden',
                               padding: typeof window !== 'undefined' && window.innerWidth <= 768 ? '1.5rem 1rem 0.75rem 1rem' : undefined,
                               ...(isClickable && {
-                                boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.3)',
+                                boxShadow: '0 6px 20px rgba(0, 0, 0, 0.06), inset 0 0 0 1px var(--brand-alpha-weak)',
                                 transform: 'translateY(0)',
-                                background: 'rgba(255, 255, 255, 0.25)',
+                                background: 'var(--surface-background)',
                               }),
                             }}
                             onMouseEnter={(e) => {
                               if (isClickable) {
                                 e.currentTarget.style.transform = 'translateY(-8px)';
-                                e.currentTarget.style.boxShadow = '0 16px 40px rgba(0, 0, 0, 0.2), inset 0 0 0 2px rgba(255, 255, 255, 0.5)';
-                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.35)';
+                                e.currentTarget.style.boxShadow = '0 16px 40px rgba(0, 0, 0, 0.1), inset 0 0 0 1px var(--brand-alpha-strong)';
+                                e.currentTarget.style.background = 'var(--brand-alpha-weak)';
                               }
                             }}
                             onMouseLeave={(e) => {
                               if (isClickable) {
                                 e.currentTarget.style.transform = 'translateY(0)';
-                                e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.3)';
-                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)';
+                                e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.06), inset 0 0 0 1px var(--brand-alpha-weak)';
+                                e.currentTarget.style.background = 'var(--surface-background)';
                               }
                             }}
                           >
@@ -259,10 +259,10 @@ export default function Page() {
                                   style={{ 
                                     textAlign: 'center',
                                     lineHeight: '1.2',
-                                    marginBottom: 0,
-                                    whiteSpace: 'normal',
-                                    overflow: 'visible',
-                                    textOverflow: 'unset',
+                                    marginBottom: '8px',
+                                    whiteSpace: 'nowrap',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
                                     width: '100%'
                                   }}
                                 >
@@ -274,10 +274,10 @@ export default function Page() {
                                   style={{ 
                                     textAlign: 'center',
                                     lineHeight: '1.5',
-                                    display: 'block',
-                                    WebkitLineClamp: 'unset',
-                                    WebkitBoxOrient: 'unset',
-                                    overflow: 'visible',
+                                    display: '-webkit-box',
+                                    WebkitLineClamp: 3,
+                                    WebkitBoxOrient: 'vertical',
+                                    overflow: 'hidden',
                                     width: '100%'
                                   }}
                                 >
@@ -288,7 +288,7 @@ export default function Page() {
                                     {service.details.slice(0, 3).map((detail: string, detailIndex: number) => (
                                       <Flex key={detailIndex} gap="s" vertical="center" style={{ width: '100%' }}>
                                         <Text variant="body-default-s" onBackground="neutral-weak" style={{ flexShrink: 0, width: '12px' }}>•</Text>
-                                        <Text variant="body-default-s" onBackground="neutral-weak" style={{ lineHeight: '1.4', display: 'block', overflow: 'visible', width: '100%' }}>{detail}</Text>
+                                        <Text variant="body-default-s" onBackground="neutral-weak" style={{ lineHeight: '1.4', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', width: '100%' }}>{detail}</Text>
                                       </Flex>
                                     ))}
                                   </Column>
@@ -301,17 +301,17 @@ export default function Page() {
                                   horizontal="center" 
                                   style={{ 
                                     padding: '10px 16px',
-                                    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+                                    backgroundColor: 'var(--accent-alpha-weak)',
                                     borderRadius: 'var(--radius-m)',
                                     marginTop: '16px',
                                     marginBottom: '8px',
                                     whiteSpace: 'nowrap',
                                   }}
                                 >
-                                  <Text variant="body-default-m" style={{ fontSize: '13px', fontWeight: 600, color: 'rgba(0, 0, 0, 0.8)', whiteSpace: 'nowrap' }}>
+                                  <Text variant="body-default-m" style={{ fontSize: '13px', fontWeight: 600, color: 'var(--accent-on-background-strong)', whiteSpace: 'nowrap' }}>
                                     {language === "es" ? "Haz clic para más información" : "Click for more information"}
                                   </Text>
-                                  <Icon name="arrowRight" size="s" style={{ color: 'rgba(0, 0, 0, 0.8)' }} />
+                                  <Icon name="arrowRight" size="s" style={{ color: 'var(--accent-on-background-strong)' }} />
                                 </Flex>
                               )}
                             </Column>
@@ -338,19 +338,19 @@ export default function Page() {
                         style={{ 
                           fontSize: '1.25rem', 
                           padding: '20px 40px',
-                          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.3)',
-                          background: 'rgba(255, 255, 255, 0.25)',
+                          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.08), inset 0 0 0 1px var(--brand-alpha-weak)',
+                          background: 'var(--brand-alpha-weak)',
                           transition: 'all 0.3s ease-in-out',
                         }}
                         onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
                           e.currentTarget.style.transform = 'translateY(-6px)';
-                          e.currentTarget.style.boxShadow = '0 14px 36px rgba(0, 0, 0, 0.2), inset 0 0 0 2px rgba(255, 255, 255, 0.5)';
-                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.35)';
+                          e.currentTarget.style.boxShadow = '0 14px 36px rgba(0, 0, 0, 0.12), inset 0 0 0 1px var(--brand-alpha-medium)';
+                          e.currentTarget.style.background = 'var(--brand-alpha-medium)';
                         }}
                         onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
                           e.currentTarget.style.transform = 'translateY(0)';
-                          e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.3)';
-                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)';
+                          e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.08), inset 0 0 0 1px var(--brand-alpha-weak)';
+                          e.currentTarget.style.background = 'var(--brand-alpha-weak)';
                         }}
                       >
                         {language === "es" ? "Preguntas Frecuentes" : "FAQ"}
