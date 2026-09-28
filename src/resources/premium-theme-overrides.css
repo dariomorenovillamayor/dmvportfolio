@@ -1,0 +1,50 @@
+/* ============================================
+   Premium Nutrition Theme — additive overrides
+   These rules refine the cursor glow and card
+   hovers to match the new emerald/yellow/sand
+   palette, without touching custom.css.
+   ============================================ */
+
+.cursor-effect {
+  background: linear-gradient(135deg, var(--brand-solid-strong), var(--brand-solid-medium));
+  box-shadow:
+    0 0 18px var(--brand-alpha-medium),
+    0 0 36px var(--brand-alpha-weak);
+}
+
+.cursor-effect::after {
+  border-color: var(--brand-alpha-medium);
+}
+
+.cursor-effect.hover {
+  background: linear-gradient(135deg, var(--brand-solid-strong), var(--accent-solid-medium));
+  box-shadow:
+    0 0 26px var(--brand-alpha-strong),
+    0 0 50px var(--brand-alpha-medium);
+}
+
+.cursor-dot {
+  background: linear-gradient(135deg, var(--brand-solid-strong), var(--brand-solid-medium));
+  box-shadow: 0 0 16px var(--brand-alpha-medium);
+}
+
+.cursor-dot-sm {
+  background: linear-gradient(135deg, var(--accent-solid-strong), var(--accent-solid-medium));
+  box-shadow: 0 0 8px var(--accent-alpha-medium);
+}
+
+.service-card:hover {
+  border-color: var(--brand-alpha-medium) !important;
+}
+
+@keyframes avatarPulsePremium {
+  0% {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 0 0 3px rgba(255, 255, 255, 0.5), 0 0 20px var(--brand-alpha-medium);
+  }
+  50% {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 0 0 3px rgba(255, 255, 255, 0.6), 0 0 32px var(--accent-alpha-medium);
+  }
+  100% {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 0 0 3px rgba(255, 255, 255, 0.5), 0 0 20px var(--brand-alpha-medium);
+  }
+}
