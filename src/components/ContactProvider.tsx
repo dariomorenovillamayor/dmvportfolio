@@ -1,5 +1,6 @@
 "use client";
 
+import "@/resources/premium-theme-overrides.css";
 import { createContext, useContext, useState, ReactNode } from "react";
 import { ContactPanel } from "./ContactPanel";
 
@@ -55,4 +56,4 @@ export const ContactProvider = ({ children }: ContactProviderProps) => {
       />
     </ContactContext.Provider>
   );
-}; 
+};
