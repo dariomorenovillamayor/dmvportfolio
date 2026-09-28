@@ -103,10 +103,28 @@ export default function Page() {
 
             {/* Right Column (Scrollable) - All content */}
             <Column data-col-span="8" gap="0">
+              {/* Eyebrow */}
+              <Text
+                variant="label-default-s"
+                onBackground="brand-weak"
+                style={{
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  marginBottom: '12px',
+                  fontWeight: 600,
+                }}
+              >
+                {person.role}
+              </Text>
               {/* Name */}
-              <Heading variant="display-strong-l">{person.name}</Heading>
+              <Heading
+                variant="display-strong-l"
+                style={{ letterSpacing: '-0.01em', lineHeight: '1.05' }}
+              >
+                {person.name}
+              </Heading>
 
-              <Column gap="s" style={{ marginBottom: '32px' }}>
+              <Column gap="s" style={{ marginTop: '8px', marginBottom: '32px' }}>
                 {/* Role */}
                 <Text variant="display-default-s" onBackground="neutral-weak">
                   {person.role}
@@ -164,23 +182,33 @@ export default function Page() {
               {/* Services Section */}
               {about.services.display && (
                 <Column fillWidth gap="l" id="services" style={{ paddingTop: '32px' }}>
-                  <Flex
-                    gap="m"
-                    vertical="center"
-                    horizontal="center"
-                    style={{
-                      flexWrap: 'nowrap',
-                      alignItems: 'center',
-                      ...(typeof window !== 'undefined' && window.innerWidth <= 768
-                        ? { flexDirection: 'column', textAlign: 'center', gap: '0.5rem' }
-                        : {}),
-                    }}
-                  >
-                    <Icon name="heart" size="xl" onBackground="brand-weak" style={{ flexShrink: 0 }} />
-                    <Heading variant="display-strong-m" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
-                      {about.services.title}
-                    </Heading>
-                  </Flex>
+                  <Column gap="s" horizontal="center" style={{ textAlign: 'center' }}>
+                    <Flex
+                      gap="m"
+                      vertical="center"
+                      horizontal="center"
+                      style={{
+                        flexWrap: 'nowrap',
+                        alignItems: 'center',
+                        ...(typeof window !== 'undefined' && window.innerWidth <= 768
+                          ? { flexDirection: 'column', textAlign: 'center', gap: '0.5rem' }
+                          : {}),
+                      }}
+                    >
+                      <Icon name="heart" size="xl" onBackground="brand-weak" style={{ flexShrink: 0 }} />
+                      <Heading variant="display-strong-m" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
+                        {about.services.title}
+                      </Heading>
+                    </Flex>
+                    <Flex
+                      style={{
+                        width: '64px',
+                        height: '3px',
+                        background: 'var(--accent-solid-medium)',
+                        borderRadius: 'var(--radius-full)',
+                      }}
+                    />
+                  </Column>
                   <Flex horizontal="center" fillWidth>
                     <Grid
                       columns="2"
